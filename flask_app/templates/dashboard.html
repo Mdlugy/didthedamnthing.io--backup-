@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+        <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ url_for('static', filename='css/styles.css') }}"
+  />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <img
+          style="max-width:10%;
+          max-height:10%;"
+          src="{{ url_for('static', filename='img/green.png') }}"
+          alt="logo"
+        />
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <main>
+              <div class="dashcontainer">
+    <table id="Todaygoals" class="table table-hover caption-top">
+        <caption>Short term</caption>
+        <thead>
+          <tr>
+            <th scope="col">Goal</th>
+            <th scope="col">Next Deliverable Date</th>
+            <th scope="col">Next Deliverable Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for goal in goals%}
+          <tr>
+            <td class="td">{{goal.name}}</th>
+            <td class="td">{{goal.specifics.breakdown.due_date}}</td>
+            <td class="td">{{goal.specifics.breakdown.mqd}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+      <table class="table table-hover caption-top">
+        <caption>Long Term</caption>
+        <thead>
+          <tr>
+            <th scope="col">Goals</th>
+            <th scope="col">Last Deliverable Date</th>
+            <th scope="col">Last Deliverable Description</th>
+            <th scope="col">Why?</th>
+            <th scope="col">group</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for goal in goals%}
+          <tr>
+
+            <td class="td">{{goal.name}}</th>
+            <td class="td">{{goal.specifics.due_date}}</td>
+            <td class="td">{{goal.specifics.mqd}}</td>
+            <td class="td">{{goal.specifics.why}}</td>
+            <td class="td">(not yet implemented)</td>
+
+          </tr>
+          {%endfor%}
+          
+        </tbody>
+      </table>
+    </div>
+    <div class="leftcontent">
+    </table>
+    <table class="table table-hover caption-top">
+        <caption>My Groups</caption>
+      
+      <thead>
+        <tr>
+          <th scope="col">Goal</th>
+          <th scope="col">next meetup</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for goal in goals%}
+        <tr>
+        <td class="td">{{goal.name}}</td>
+        <td scope="col">not yet implemented</td>
+        </tr>
+        {%endfor%}
+
+        
+      </tbody>
+    </table>
+
+    <table class="table table-hover caption-top">
+        <caption>Today's Actions</caption>
+      
+      <thead>
+        <tr>
+          <th scope="col">Goal</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for goal in goals%}
+        <tr>
+        <td class="td">{{goal.name}}</td>
+        <td class="td"><button>didthedamnthing</button><button>How</button>            <!-- add google calendar functionality -->
+        </tr>
+        {%endfor%}
+
+      </tbody>
+    </table>
+       <div class="buttonlinks">
+           <a href="/goal/new" class="btn btn-success btn-lg active" role="button" aria-pressed="true">New Goal</a>
+           <a href="#" class="btn btn-success btn-lg disabled" role="button" aria-disabled="true"  >New Group</a>
+           <a href="/goals" class="btn btn-success btn-lg active" role="button" aria-pressed="true">My Goals</a>
+           <a href="#" class="btn btn-success btn-lg disabled" role="button" aria-disabled="true" >My Groups</a>
+       </div>
+    </div>
+</main>
+
+  </body>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+</html>
